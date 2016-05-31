@@ -36,8 +36,9 @@ function sudoku(puzzle) {
   function isValid(num, rowIndex, colIndex){
   	return !inRow(num, rowIndex, colIndex) && !inCol(num, colIndex) && !inBox(num, rowIndex, colIndex);
   }
-  var i = 0, invalidBool = false;
+  var i = 0, steps = 0;
   while (i < emptyCell.length) {
+    steps++;
   	var n = solvedPuzzle[emptyCell[i][0]][emptyCell[i][1]]+1;
   	while(!isValid(n, emptyCell[i][0], emptyCell[i][1]) && n <= 9){
   		n++;
@@ -50,31 +51,19 @@ function sudoku(puzzle) {
   	solvedPuzzle[emptyCell[i][0]][emptyCell[i][1]] = n;
   	i++;
   }
-
+  console.log('steps:',steps);
   return solvedPuzzle;
 }
 
-//  var puzzle = [
-//     [5,3,0,0,7,0,0,0,0],
-//     [6,0,0,1,9,5,0,0,0],
-//     [0,9,8,0,0,0,0,6,0],
-//     [8,0,0,0,6,0,0,0,3],
-//     [4,0,0,8,0,3,0,0,1],
-//     [7,0,0,0,2,0,0,0,6],
-//     [0,6,0,0,0,0,2,8,0],
-//     [0,0,0,4,1,9,0,0,5],
-//     [0,0,0,0,8,0,0,7,9]];
+ // var samplePuzzle = [
+ //    [0,2,0,0,0,0,0,0,0],
+ //    [0,0,0,6,0,0,0,0,3],
+ //    [0,7,4,0,8,0,0,0,0],
+ //    [0,0,0,0,0,3,0,0,2],
+ //    [0,8,0,0,4,0,0,1,0],
+ //    [6,0,0,5,0,0,0,0,0],
+ //    [0,0,0,0,1,0,7,8,0],
+ //    [5,0,0,0,0,9,0,0,0],
+ //    [0,0,0,0,0,0,0,4,0]];
 
-// var algSolution = sudoku(puzzle);
-// var solution = [
-//   [5,3,4,6,7,8,9,1,2],
-//   [6,7,2,1,9,5,3,4,8],
-//   [1,9,8,3,4,2,5,6,7],
-//   [8,5,9,7,6,1,4,2,3],
-//   [4,2,6,8,5,3,7,9,1],
-//   [7,1,3,9,2,4,8,5,6],
-//   [9,6,1,5,3,7,2,8,4],
-//   [2,8,7,4,1,9,6,3,5],
-//   [3,4,5,2,8,6,1,7,9]];
-// console.log(algSolution.toString() == solution.toString());
 
