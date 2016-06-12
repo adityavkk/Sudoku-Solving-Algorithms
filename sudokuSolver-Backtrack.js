@@ -1,3 +1,4 @@
+//Simple backtracking algorithm that sequentially traverses a solve array (default to [1,2,3,4,5,6,7,8,9]) to solve a Sudoku puzzle
 function solve(solveArray, puzz) {
   function inRow(num, rowIndex) {
     return puzz[rowIndex].indexOf(num) > -1;
@@ -94,4 +95,4 @@ var puzzle = [
   [0, 0, 8, 5, 0, 0, 0, 1, 0],
   [0, 9, 0, 0, 0, 0, 4, 0, 0]
 ];
-console.log(sudoku(puzzle1));
+console.log(sudoku(puzzle));
