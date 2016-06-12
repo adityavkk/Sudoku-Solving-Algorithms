@@ -39,8 +39,19 @@ function solve(solveArray, puzz) {
   function isValid(num, rowIndex, colIndex) {
     return !inRow(num, rowIndex, colIndex) && !inCol(num, colIndex) && !inBox(num, rowIndex, colIndex);
   }
+  function emptyCellCoordinatesGen(puzz){
+    var emptyCells = [];
+    for (var i = 0; i < 9; i++) {
+      for(var j = 0; j < 9; j++){
+        if(puzz[i][j] === 0)
+          emptyCells.push([i,j]);
+      }
+    }
+    return emptyCells;
+  }
   var i = 0,
     steps = 0,
+    emptyCell = emptyCellCoordinatesGen(puzz),
     n;
   while (i < emptyCell.length) {
     steps++;
@@ -83,4 +94,4 @@ var puzzle = [
   [0, 0, 8, 5, 0, 0, 0, 1, 0],
   [0, 9, 0, 0, 0, 0, 4, 0, 0]
 ];
-console.log(sudoku(puzzle));
+console.log(sudoku(puzzle1));
